@@ -1,5 +1,7 @@
 'use strict';
 
+let seattleArr = [];
+
 let seattleStore = {
   min: 23,
   max: 65,
@@ -8,18 +10,27 @@ let seattleStore = {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   },
   parseArr: function() {
-    let seattleArr = [];
     let time = 6;
-    let cookie;
+    let cookie = 0;
+    let total;
     for (let i = 0; i < 14; i++) {
       cookie = this.getNumberOfRandomCustomers();
       seattleArr[i] = `${time} o'clock: ${cookie} cookies`;
       time += 1;
+      total += cookie;
+    }
+    seattleArr.push(`Total: ${total} cookies`)
+    return seattleArr;
+  },
+  consoleLog: function() {
+    let tempArr = this.parseArr(); 
+    for (let i = 0; i < tempArr.length; i++) {
+      console.log(tempArr[i]);
     }
   }
 }
 
-console.log(seattleStore.parseArr());
+seattleStore.consoleLog();
 
 let tokyoStore = {
   min: 3,
