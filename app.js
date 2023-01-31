@@ -12,13 +12,14 @@ let seattleStore = {
   parseArr: function() {
     let time = 6;
     let cookie = 0;
-
+    let total = cookie;
     for (let i = 0; i < 13; i++) {
       cookie = this.getNumberOfRandomCustomers();
+      total = total + cookie;
       seattleArr[i] = `${time} o'clock: ${cookie} cookies`;
       time += 1;
     }
-    seattleArr.push(`Total: ${total} cookies`)
+    seattleArr.push(`Total: ${total} cookies`);
     return seattleArr;
   },
   consoleLog: function() {
@@ -58,7 +59,7 @@ let parisStore = {
   }
 }
 
-let seattleObj = {
+let limaStore = {
   min: 2,
   max: 16,
   avg: 4.6,
