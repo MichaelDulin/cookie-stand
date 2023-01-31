@@ -1,6 +1,46 @@
 'use strict';
 
+// Constructor implementation
+// Step 1: setup constructor for dynamic object building
+// Step 2: manipulate DOM into a table instead of list
 
+function headArr() {
+  let hArr = [];
+  let amPm = ':00am';
+  let time = 6;
+  hArr[0] = '';
+  for (let i = 1; i < 15; i++) {
+    if (i == 7) {
+      amPm = ':00pm';
+      time -= 12;
+    }
+    hArr[i] = time + amPm;
+    time += 1;
+  }
+ hArr.push(`Daily Location Schedule`);
+ return hArr;
+}
+
+function footArr() {
+  // Provide a row of hourly totals 
+  let fArr = [];
+  fArr[0] = 'Totals';
+}
+
+
+
+
+
+// Table in HTML 
+/*
+Top row: HTML-<thead> : JS-amPm / time
+Left: 1st column should be store name (seattleArr[0])
+*/
+
+
+
+
+/* Lab6
 let seattleStore = {
   min: 23,
   max: 65,
@@ -267,3 +307,4 @@ tokyoStore.renderList();
 dubaiStore.renderList();
 parisStore.renderList();
 limaStore.renderList();
+*/
