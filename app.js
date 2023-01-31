@@ -12,12 +12,11 @@ let seattleStore = {
   parseArr: function() {
     let time = 6;
     let cookie = 0;
-    let total;
-    for (let i = 0; i < 14; i++) {
+
+    for (let i = 0; i < 13; i++) {
       cookie = this.getNumberOfRandomCustomers();
       seattleArr[i] = `${time} o'clock: ${cookie} cookies`;
       time += 1;
-      total += cookie;
     }
     seattleArr.push(`Total: ${total} cookies`)
     return seattleArr;
