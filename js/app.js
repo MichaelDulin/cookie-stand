@@ -14,9 +14,9 @@ let seattleStore = {
     let cookie = 0;
     let total = cookie;
     let amPm = 'am';
-    for (let i = 0; i < 13; i++) {
-      cookie = this.getNumberOfRandomCustomers();
-      total = total + cookie;
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
+      total += cookie;
       seattleArr[i] = `${time}${amPm}: ${cookie} cookies`;
       if (i == 6) {
         time -= 12;
@@ -66,8 +66,8 @@ let tokyoStore = {
     let cookie = 0;
     let total = cookie;
     let amPm = 'am';
-    for (let i = 0; i < 13; i++) {
-      cookie = this.getNumberOfRandomCustomers();
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
       total = total + cookie;
       tokyoArr[i] = `${time}${amPm}: ${cookie} cookies`;
       if (i == 6) {
@@ -118,8 +118,8 @@ let dubaiStore = {
     let cookie = 0;
     let total = cookie;
     let amPm = 'am';
-    for (let i = 0; i < 13; i++) {
-      cookie = this.getNumberOfRandomCustomers();
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
       total = total + cookie;
       dubaiArr[i] = `${time}${amPm}: ${cookie} cookies`;
       if (i == 6) {
@@ -170,8 +170,8 @@ let parisStore = {
     let cookie = 0;
     let total = cookie;
     let amPm = 'am';
-    for (let i = 0; i < 13; i++) {
-      cookie = this.getNumberOfRandomCustomers();
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
       total = total + cookie;
       parisArr[i] = `${time}${amPm}: ${cookie} cookies`;
       if (i == 6) {
@@ -222,8 +222,8 @@ let limaStore = {
     let cookie = 0;
     let total = cookie;
     let amPm = 'am';
-    for (let i = 0; i < 13; i++) {
-      cookie = this.getNumberOfRandomCustomers();
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
       total = total + cookie;
       limaArr[i] = `${time}${amPm}: ${cookie} cookies`;
       if (i == 6) {
