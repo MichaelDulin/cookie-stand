@@ -29,6 +29,8 @@ h2 {
     padding: 10px;
     font-size: 10px;
     color: #2f3e46;
+    display: flex;
+    
 }
 
 article {
@@ -40,6 +42,7 @@ article {
     font-size: 20px;
     color: #2f3e46;
     background-color:#52796f;
+    display: flex;
 }
 
 li {

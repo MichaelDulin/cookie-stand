@@ -4,6 +4,48 @@
 // Step 1: setup constructor for dynamic object building
 // Step 2: manipulate DOM into a table instead of list
 
+let storeContainer = document.getElementById('salesTable');
+let storeTBody = document.querySelector('tbody');
+let storeTHead = document.querySelector('thead');
+
+function Store(name, min, max, avg) {
+  this.name = name;
+  this.arr = [];
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.id = `${this.name}Profile`;
+  this.getNumberOfRandomCustomers = function() {
+    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+  }
+  this.parseArr = function() {
+    let tempArr = this.arr;
+    tempArr[0] = this.name;
+    let cookie = 0;
+    for (let i = 0; i < 14; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
+      tempArr[i] = `${cookie} cookies`;
+    }
+    return tempArr;
+  }
+  this.renderTable = function(){
+    // creating container to house all changes made my JS to HTML
+    salesContainer.appendChild(salesArt);
+    // Assign header (h3) value and append it 
+    let salesH3 = document.createElement('h3');
+    salesH3.textContent = 'Seattle';
+    salesArt.appendChild(salesH3);
+    let temp = this.parseArr();
+    let ul = document.createElement('ul');
+    for (let i = 0; i < temp.length; i++) {
+      let li = document.createElement('li');
+      li.textContent = temp[i];
+      ul.appendChild(li);
+    }
+    salesArt.appendChild(ul);
+  }
+} 
+
 function headArr() {
   let hArr = [];
   let amPm = ':00am';
@@ -18,7 +60,17 @@ function headArr() {
     time += 1;
   }
  hArr.push(`Daily Location Schedule`);
- return hArr;
+ renderTHead();
+ function renderTHead() {
+  let tr = document.createElement('td');
+  for (let i = 0; i < hArr.length; i++){
+    let td = document.createElement('td');
+    td.textContent = hArr[i];
+    tr.appendChild(td);
+  }
+  storeTHead.appendChild(tr);
+  storeContainer.appendChild(storeTHead);
+ }
 }
 
 function footArr() {
@@ -27,8 +79,46 @@ function footArr() {
   fArr[0] = 'Totals';
 }
 
+Store.prototype.renderTable = function() {
+  let tr = document.createElement('tr');
+  for (let i = 0; i < this.arr.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = this.arr[i];
+    tr.appendChild(td);
+  }
+  storeTBody.appendChild(tr);
+}
 
-
+let seattle = new Store(
+  'Seattle',
+  23,
+  65,
+  6.3
+);
+let tokyo = new Store(
+  'Tokyo',
+  3,
+  24,
+  1.2
+);
+let dubai = new Store(
+  'Dubai',
+  11,
+  38,
+  3.7
+);
+let paris = new Store(
+  'Paris',
+  20,
+  38,
+  2.3
+);
+let lima = new Store(
+  'Lima',
+  2,
+  16,
+  4.6
+);
 
 
 // Table in HTML 
