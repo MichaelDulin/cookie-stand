@@ -1,11 +1,5 @@
 'use strict';
 
-seattleStore.renderList();
-tokyoStore.renderList();
-dubaiStore.renderList();
-parisStore.renderList();
-limaStore.renderList();
-
 
 let seattleStore = {
   min: 23,
@@ -266,3 +260,10 @@ let limaStore = {
     }
   }
 }
+
+
+seattleStore.renderList();
+tokyoStore.renderList();
+dubaiStore.renderList();
+parisStore.renderList();
+limaStore.renderList();
