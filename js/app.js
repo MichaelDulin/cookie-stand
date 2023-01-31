@@ -18,7 +18,7 @@ let seattleStore = {
       cookie = this.getNumberOfRandomCustomers();
       total = total + cookie;
       seattleArr[i] = `${time}${amPm}: ${cookie} cookies`;
-      if (i == 7) {
+      if (i == 6) {
         time -= 12;
         amPm = 'pm';
       }
@@ -36,7 +36,7 @@ let seattleStore = {
     let salesH3 = document.createElement('h3');
     salesH3.textContent = 'Seattle';
     salesArt.appendChild(salesH3);
-    let temp = parseArr();
+    let temp = this.parseArr();
     let ul = document.createElement('ul');
     for (let i = 0; i < temp.length; i++) {
       let li = document.createElement('li');
@@ -61,7 +61,7 @@ let tokyoStore = {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   },
   parseArr: function() {
-    let tokoyArr = [];
+    let tokyoArr = [];
     let time = 6;
     let cookie = 0;
     let total = cookie;
@@ -69,15 +69,15 @@ let tokyoStore = {
     for (let i = 0; i < 13; i++) {
       cookie = this.getNumberOfRandomCustomers();
       total = total + cookie;
-      tokoyArr[i] = `${time}${amPm}: ${cookie} cookies`;
-      if (i == 7) {
+      tokyoArr[i] = `${time}${amPm}: ${cookie} cookies`;
+      if (i == 6) {
         time -= 12;
         amPm = 'pm';
       }
       time += 1;
     }
-    tokoyArr.push(`Total: ${total} cookies`);
-    return tokoyArr;
+    tokyoArr.push(`Total: ${total} cookies`);
+    return tokyoArr;
   },
   renderList: function(){
     // creating container to house all changes made my JS to HTML
@@ -88,7 +88,7 @@ let tokyoStore = {
     let salesH3 = document.createElement('h3');
     salesH3.textContent = 'Tokyo';
     salesArt.appendChild(salesH3);
-    let temp = parseArr();
+    let temp = this.parseArr();
     let ul = document.createElement('ul');
     for (let i = 0; i < temp.length; i++) {
       let li = document.createElement('li');
@@ -121,8 +121,8 @@ let dubaiStore = {
     for (let i = 0; i < 13; i++) {
       cookie = this.getNumberOfRandomCustomers();
       total = total + cookie;
-      tokoyArr[i] = `${time}${amPm}: ${cookie} cookies`;
-      if (i == 7) {
+      dubaiArr[i] = `${time}${amPm}: ${cookie} cookies`;
+      if (i == 6) {
         time -= 12;
         amPm = 'pm';
       }
@@ -140,7 +140,7 @@ let dubaiStore = {
     let salesH3 = document.createElement('h3');
     salesH3.textContent = 'Dubai';
     salesArt.appendChild(salesH3);
-    let temp = parseArr();
+    let temp = this.parseArr();
     let ul = document.createElement('ul');
     for (let i = 0; i < temp.length; i++) {
       let li = document.createElement('li');
@@ -174,7 +174,7 @@ let parisStore = {
       cookie = this.getNumberOfRandomCustomers();
       total = total + cookie;
       parisArr[i] = `${time}${amPm}: ${cookie} cookies`;
-      if (i == 7) {
+      if (i == 6) {
         time -= 12;
         amPm = 'pm';
       }
@@ -192,7 +192,7 @@ let parisStore = {
     let salesH3 = document.createElement('h3');
     salesH3.textContent = 'Paris';
     salesArt.appendChild(salesH3);
-    let temp = parseArr();
+    let temp = this.parseArr();
     let ul = document.createElement('ul');
     for (let i = 0; i < temp.length; i++) {
       let li = document.createElement('li');
@@ -226,7 +226,7 @@ let limaStore = {
       cookie = this.getNumberOfRandomCustomers();
       total = total + cookie;
       limaArr[i] = `${time}${amPm}: ${cookie} cookies`;
-      if (i == 7) {
+      if (i == 6) {
         time -= 12;
         amPm = 'pm';
       }
@@ -244,7 +244,7 @@ let limaStore = {
     let salesH3 = document.createElement('h3');
     salesH3.textContent = 'Lima';
     salesArt.appendChild(salesH3);
-    let temp = parseArr();
+    let temp = this.parseArr();
     let ul = document.createElement('ul');
     for (let i = 0; i < temp.length; i++) {
       let li = document.createElement('li');

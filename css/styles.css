@@ -16,19 +16,46 @@ h2 {
     padding-bottom: 30px;
     font-size: 30px;
     font-weight: bold;
+    color: #2f3e46;
   }
 
-#salesLocation{
+#salesLocation {
     float:left;
-    width:18%;
-    height:200px;
     margin-right: 2%;
     margin-left: 2%;
     border-radius: 25px;
     border: 2px solid #2f3e46;
-    background-color:#52796f;
+    text-align: center;
+    padding: 10px;
+    font-size: 10px;
+    color: #2f3e46;
+}
+
+article {
+    margin: 2%;
+    border-radius: 25px;
+    border: 2px solid #2f3e46;
     text-align: center;
     padding: 10px;
     font-size: 20px;
     color: #2f3e46;
+    background-color:#52796f;
+}
+
+li {
+    background-color:#52796f;
+    margin: 1rem;
+}
+
+ul {
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    color: #2f3e46; 
+}
+
+img {
+ opacity: 70%;
+ width: 100%;
+ height: 30%;
 }
