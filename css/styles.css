@@ -64,6 +64,24 @@ img {
 }
 
 /* table formatting (look up) */
-table, td, tj {
-    border:
+#salesTable {
+    padding: 5px;
+    font-size: 20px;
+    padding-left: 10%
+}
+
+tr {
+    padding: 5px;
+    font-size: 20px;
+    color: #2f3e46; 
+    padding-left: 10% 
+}
+
+td {
+    padding: 1rem;
+    width: 1rem;
+}
+
+thead {
+    font-weight: bold;
 }
