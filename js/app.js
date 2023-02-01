@@ -8,9 +8,9 @@ let storeContainer = document.getElementById('salesTable');
 let storeTBody = document.querySelector('tbody');
 let storeTHead = document.querySelector('thead');
 
+// Constructor
 function Store(name, min, max, avg) {
   this.name = name;
-  this.arr = [];
   this.min = min;
   this.max = max;
   this.avg = avg;
@@ -19,47 +19,32 @@ function Store(name, min, max, avg) {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   }
   this.parseArr = function() {
-    let tempArr = this.arr;
+    let tempArr = [];
     tempArr[0] = this.name;
     let cookie = 0;
-    for (let i = 0; i < 14; i++) {
+    for (let i = 1; i < 15; i++) {
       cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
-      tempArr[i] = `${cookie} cookies`;
+      tempArr[i] = cookie;
     }
     return tempArr;
   }
-  this.renderTable = function(){
-    // creating container to house all changes made my JS to HTML
-    salesContainer.appendChild(salesArt);
-    // Assign header (h3) value and append it 
-    let salesH3 = document.createElement('h3');
-    salesH3.textContent = 'Seattle';
-    salesArt.appendChild(salesH3);
-    let temp = this.parseArr();
-    let ul = document.createElement('ul');
-    for (let i = 0; i < temp.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = temp[i];
-      ul.appendChild(li);
-    }
-    salesArt.appendChild(ul);
-  }
 } 
 
+// Handles header
 function headArr() {
   let hArr = [];
   let amPm = ':00am';
   let time = 6;
   hArr[0] = '';
   for (let i = 1; i < 15; i++) {
-    if (i == 7) {
+    if (i == 8) {
       amPm = ':00pm';
       time -= 12;
     }
     hArr[i] = time + amPm;
     time += 1;
   }
- hArr.push(`Daily Location Schedule`);
+ hArr.push(`Daily Location Total`);
  renderTHead();
  function renderTHead() {
   let tr = document.createElement('td');
@@ -69,10 +54,11 @@ function headArr() {
     tr.appendChild(td);
   }
   storeTHead.appendChild(tr);
-  storeContainer.appendChild(storeTHead);
+  //storeContainer.appendChild(storeTHead);
  }
 }
 
+// Handles footer
 function footArr() {
   // Provide a row of hourly totals 
   let fArr = [];
@@ -80,13 +66,17 @@ function footArr() {
 }
 
 Store.prototype.renderTable = function() {
+  let tempArr = this.parseArr();
   let tr = document.createElement('tr');
-  for (let i = 0; i < this.arr.length; i++) {
+  for (let i = 0; i < tempArr.length; i++) {
     let td = document.createElement('td');
-    td.textContent = this.arr[i];
+    td.textContent = tempArr[i];
     tr.appendChild(td);
   }
+  tempArr.splice(this.name);
   storeTBody.appendChild(tr);
+  storeContainer.appendChild(storeTBody);
+
 }
 
 let seattle = new Store(
@@ -119,6 +109,13 @@ let lima = new Store(
   16,
   4.6
 );
+
+headArr();
+seattle.renderTable();
+tokyo.renderTable();
+dubai.renderTable();
+paris.renderTable();
+lima.renderTable();
 
 
 // Table in HTML 
@@ -182,7 +179,6 @@ let seattleStore = {
     }
   }
 }
-
 let tokyoStore = {
   min: 3,
   max: 24,
@@ -234,7 +230,6 @@ let tokyoStore = {
     }
   }
 }
-
 let dubaiStore = {
   min: 11,
   max: 38,
@@ -286,7 +281,6 @@ let dubaiStore = {
     }
   }
 }
-
 let parisStore = {
   min: 20,
   max: 38,
@@ -338,7 +332,6 @@ let parisStore = {
     }
   }
 }
-
 let limaStore = {
   min: 2,
   max: 16,
@@ -390,8 +383,6 @@ let limaStore = {
     }
   }
 }
-
-
 seattleStore.renderList();
 tokyoStore.renderList();
 dubaiStore.renderList();
