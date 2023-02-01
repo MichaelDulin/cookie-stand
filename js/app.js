@@ -7,6 +7,8 @@
 let storeContainer = document.getElementById('salesTable');
 let storeTBody = document.querySelector('tbody');
 let storeTHead = document.querySelector('thead');
+let storeTFoot = document.querySelector('tfoot');
+let totalArr = [];
 
 // Constructor
 function Store(name, min, max, avg) {
@@ -20,15 +22,46 @@ function Store(name, min, max, avg) {
   }
   this.parseArr = function() {
     let tempArr = [];
-    tempArr[0] = this.name;
     let cookie = 0;
+    let dailyTotal = 0;
     for (let i = 1; i < 15; i++) {
       cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
       tempArr[i] = cookie;
+      dailyTotal += cookie;
     }
+    tempArr.push(dailyTotal);
     return tempArr;
   }
 } 
+
+function getArrOfArr(temp) {
+  let cur = temp;
+  cur.shift();
+  totalArr.push(cur);
+}
+
+function total() {
+  let calcArr = [];
+  let temp = [];
+  let finalArr = [];
+  for (let i = 0; i < totalArr.length; i++) {
+    temp = totalArr[i];
+    for (let k = 1; k < temp.length; k++){
+      calcArr[i] += temp[i];
+    }
+    finalArr[i] = calcArr;
+  }
+  finalArr.splice('Totals');
+  let tr = document.createElement('tr');
+  for (let i = 0; i < finalArr.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = finalArr[i];
+    tr.appendChild(th);
+  }
+  storeTBody.appendChild(tr);
+  storeContainer.appendChild(storeTBody);
+}
+
 
 // Handles header
 function headArr() {
@@ -47,33 +80,27 @@ function headArr() {
  hArr.push(`Daily Location Total`);
  renderTHead();
  function renderTHead() {
-  let tr = document.createElement('td');
+  let tr = document.createElement('tr');
   for (let i = 0; i < hArr.length; i++){
-    let td = document.createElement('td');
-    td.textContent = hArr[i];
-    tr.appendChild(td);
+    let th = document.createElement('th');
+    th.textContent = hArr[i];
+    storeTHead.appendChild(tr);
+    tr.appendChild(th);
   }
-  storeTHead.appendChild(tr);
-  //storeContainer.appendChild(storeTHead);
+  storeContainer.appendChild(storeTHead);
  }
-}
-
-// Handles footer
-function footArr() {
-  // Provide a row of hourly totals 
-  let fArr = [];
-  fArr[0] = 'Totals';
 }
 
 Store.prototype.renderTable = function() {
   let tempArr = this.parseArr();
+  getArrOfArr(tempArr);
+  tempArr.unshift(this.name);
   let tr = document.createElement('tr');
   for (let i = 0; i < tempArr.length; i++) {
     let td = document.createElement('td');
     td.textContent = tempArr[i];
     tr.appendChild(td);
   }
-  tempArr.splice(this.name);
   storeTBody.appendChild(tr);
   storeContainer.appendChild(storeTBody);
 
@@ -116,6 +143,7 @@ tokyo.renderTable();
 dubai.renderTable();
 paris.renderTable();
 lima.renderTable();
+total();
 
 
 // Table in HTML 
