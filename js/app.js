@@ -1,6 +1,161 @@
 'use strict';
 
+// Constructor implementation
+// Step 1: setup constructor for dynamic object building
+// Step 2: manipulate DOM into a table instead of list
 
+let storeContainer = document.getElementById('salesTable');
+let storeTBody = document.querySelector('tbody');
+let storeTHead = document.querySelector('thead');
+let storeTFoot = document.querySelector('tfoot');
+let totalArr = [];
+
+// Constructor
+function Store(name, min, max, avg) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.id = `${this.name}Profile`;
+  this.getNumberOfRandomCustomers = function() {
+    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+  }
+  this.parseArr = function() {
+    let tempArr = [];
+    let cookie = 0;
+    let dailyTotal = 0;
+    for (let i = 1; i < 15; i++) {
+      cookie = Math.ceil(this.getNumberOfRandomCustomers() * this.avg);
+      tempArr[i] = cookie;
+      dailyTotal += cookie;
+    }
+    tempArr.push(dailyTotal);
+    return tempArr;
+  }
+} 
+
+function getArrOfArr(temp) {
+  let cur = temp;
+  cur.shift();
+  totalArr.push(cur);
+}
+
+function total() {
+  let calcArr = [];
+  let temp = [];
+  let finalArr = [];
+  for (let i = 0; i < totalArr.length; i++) {
+    temp = totalArr[i];
+    for (let k = 1; k < temp.length; k++){
+      calcArr[i] += temp[i];
+    }
+    finalArr[i] = calcArr;
+  }
+  finalArr.splice('Totals');
+  let tr = document.createElement('tr');
+  for (let i = 0; i < finalArr.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = finalArr[i];
+    tr.appendChild(th);
+  }
+  storeTBody.appendChild(tr);
+  storeContainer.appendChild(storeTBody);
+}
+
+
+// Handles header
+function headArr() {
+  let hArr = [];
+  let amPm = ':00am';
+  let time = 6;
+  hArr[0] = '';
+  for (let i = 1; i < 15; i++) {
+    if (i == 8) {
+      amPm = ':00pm';
+      time -= 12;
+    }
+    hArr[i] = time + amPm;
+    time += 1;
+  }
+ hArr.push(`Daily Location Total`);
+ renderTHead();
+ function renderTHead() {
+  let tr = document.createElement('tr');
+  for (let i = 0; i < hArr.length; i++){
+    let th = document.createElement('th');
+    th.textContent = hArr[i];
+    storeTHead.appendChild(tr);
+    tr.appendChild(th);
+  }
+  storeContainer.appendChild(storeTHead);
+ }
+}
+
+Store.prototype.renderTable = function() {
+  let tempArr = this.parseArr();
+  getArrOfArr(tempArr);
+  tempArr.unshift(this.name);
+  let tr = document.createElement('tr');
+  for (let i = 0; i < tempArr.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = tempArr[i];
+    tr.appendChild(td);
+  }
+  storeTBody.appendChild(tr);
+  storeContainer.appendChild(storeTBody);
+
+}
+
+let seattle = new Store(
+  'Seattle',
+  23,
+  65,
+  6.3
+);
+let tokyo = new Store(
+  'Tokyo',
+  3,
+  24,
+  1.2
+);
+let dubai = new Store(
+  'Dubai',
+  11,
+  38,
+  3.7
+);
+let paris = new Store(
+  'Paris',
+  20,
+  38,
+  2.3
+);
+let lima = new Store(
+  'Lima',
+  2,
+  16,
+  4.6
+);
+
+headArr();
+seattle.renderTable();
+tokyo.renderTable();
+dubai.renderTable();
+paris.renderTable();
+lima.renderTable();
+total();
+
+
+// Table in HTML 
+/*
+Top row: HTML-<thead> : JS-amPm / time
+Left: 1st column should be store name (seattleArr[0])
+*/
+
+
+
+
+/* Lab6
 let seattleStore = {
   min: 23,
   max: 65,
@@ -52,7 +207,6 @@ let seattleStore = {
     }
   }
 }
-
 let tokyoStore = {
   min: 3,
   max: 24,
@@ -104,7 +258,6 @@ let tokyoStore = {
     }
   }
 }
-
 let dubaiStore = {
   min: 11,
   max: 38,
@@ -156,7 +309,6 @@ let dubaiStore = {
     }
   }
 }
-
 let parisStore = {
   min: 20,
   max: 38,
@@ -208,7 +360,6 @@ let parisStore = {
     }
   }
 }
-
 let limaStore = {
   min: 2,
   max: 16,
@@ -260,10 +411,9 @@ let limaStore = {
     }
   }
 }
-
-
 seattleStore.renderList();
 tokyoStore.renderList();
 dubaiStore.renderList();
 parisStore.renderList();
 limaStore.renderList();
+*/
