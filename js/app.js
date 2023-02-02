@@ -60,6 +60,9 @@ function headArr() {
   }
  hArr.push(`Daily Location Total`);
  renderTHead();
+
+
+
  function renderTHead() {
   let tr = document.createElement('tr');
   for (let i = 0; i < hArr.length; i++){
@@ -70,6 +73,9 @@ function headArr() {
   }
   storeContainer.appendChild(storeTHead);
  }
+
+
+ 
 }
 
 Store.prototype.renderTable = function() {
