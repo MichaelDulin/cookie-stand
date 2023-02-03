@@ -131,3 +131,32 @@ td {
 thead {
     font-weight: bold;
 }
+
+form {
+    width: 100%;
+    margin-top: 2rem;
+}
+fieldset {
+    border: 1px solid #2f3e46;;
+    width: 19%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+legend {
+    color:#2f3e46;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+  
+textarea,
+label,
+input {
+    display: block;
+}
+  
+textarea,
+input {
+    margin-bottom: 1rem;
+}
+
+
