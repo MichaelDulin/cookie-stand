@@ -129,3 +129,17 @@ dubai.renderTable();
 paris.renderTable();
 lima.renderTable();
 total();
+
+let storeForm = document.querySelector('form');
+
+let handleSubmit = function(event) {
+  event.preventDefault();
+  let newStoreName = event.target.newStoreName.value;
+  let newStoreMin = event.target.newStoreMin.value;
+  let newStoreMax = event.target.newStoreMax.value;
+  let newStoreAvg = event.target.newStoreAvg.value;
+  let newStore = new Store(newStoreName, newStoreMin, newStoreMax, newStoreAvg);
+  newStore.renderTable();
+}
+
+storeForm.addEventListener('submit', handleSubmit);
