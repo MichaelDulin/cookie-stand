@@ -58,24 +58,18 @@ function headArr() {
     hArr[i] = time + amPm;
     time += 1;
   }
- hArr.push(`Daily Location Total`);
- renderTHead();
-
-
-
- function renderTHead() {
-  let tr = document.createElement('tr');
-  for (let i = 0; i < hArr.length; i++){
-    let th = document.createElement('th');
-    th.textContent = hArr[i];
-    storeTHead.appendChild(tr);
-    tr.appendChild(th);
-  }
+  hArr.push(`Daily Location Total`);
+  renderTHead();
+  function renderTHead() {
+    let tr = document.createElement('tr');
+    for (let i = 0; i < hArr.length; i++){
+      let th = document.createElement('th');
+      th.textContent = hArr[i];
+      storeTHead.appendChild(tr);
+      tr.appendChild(th);
+    }
   storeContainer.appendChild(storeTHead);
- }
-
-
- 
+ } 
 }
 
 Store.prototype.renderTable = function() {
@@ -130,16 +124,33 @@ paris.renderTable();
 lima.renderTable();
 total();
 
+/*
+function buildADOMElement(tagToCreate, textContent, parent) {
+  let newElement = document.createElement(tagToCreate);
+  newElement.textContent = textContent;
+  parent.appendChild(newElement);
+} */
+
 let storeForm = document.querySelector('form');
 
 let handleSubmit = function(event) {
   event.preventDefault();
-  let newStoreName = event.target.newStoreName.value;
-  let newStoreMin = event.target.newStoreMin.value;
-  let newStoreMax = event.target.newStoreMax.value;
-  let newStoreAvg = event.target.newStoreAvg.value;
-  let newStore = new Store(newStoreName, newStoreMin, newStoreMax, newStoreAvg);
+  let newStoreName = paresInt(event.target.newStoreName.value);
+  let newStoreMin = paresInt(event.target.newStoreMin.value);
+  let newStoreMax = paresInt(event.target.newStoreMax.value);
+  let newStoreAvg = paresInt(event.target.newStoreAvg.value);
+  let newStore = new Store(
+    newStoreName, 
+    newStoreMin, 
+    newStoreMax, 
+    newStoreAvg);
   newStore.renderTable();
+  function newFooter() {
+    // Find foot element - remove - call new foot
+    storeTBody.removeChild(storeTFoot);
+    totalArr.shift();
+    total();
+  }
 }
 
 storeForm.addEventListener('submit', handleSubmit);
