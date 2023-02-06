@@ -3,27 +3,113 @@
 <head>
   <link rel="stylesheet" href="css/styles.css">
   <title>CookieStand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <div class="headContainer">
+    <div class="logo">
       <img id="headerImg" src="img/salmon.png" alt="salmon">
-      <h1>Salmon Cookies</h1>
-    </div>
+      <span>
+        <h2>PAT'S COOKIES</h2>
+        <p id="slogan">MADE BY PEOPLE FOR PEOPLE</p>
+      </span>
+      </div>
+      <div id="link">
+        <nav id="salesLink">
+          <a href="sales.html"> Sales </a>
+        </nav>
+      </div>
   </header>
   <main>
-    <nav>
-      <a href="sales.html"> Sales </a>
-    </nav>
-    <section class="image-container">
-      <img src="img/chinook.jpg" alt="chinook">
-      <img src="img/cutter.jpeg" alt="cutter">
+    <article id="aboutUs">
+      <div id="headBorder">
+        <h2 id="imgGalleryHead">About Us</h2>
+      </div>
       <img src="img/family.jpg" alt="family">
-      <img src="img/fish.jpg" alt="fish">
-      <img src="img/frosted-cookie.jpg" alt="frosted-cookie">
-      <img src="img/shirt.jpg" alt="shirt">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu magna varius, ultrices dui in, consequat dui. Praesent vel orci quis magna pretium fringilla sed id risus. Pellentesque molestie urna non risus congue consectetur. Integer erat ex, suscipit interdum lorem tincidunt, interdum semper est. Vestibulum fermentum accumsan pulvinar. Aliquam faucibus ligula in finibus feugiat. Aliquam vitae diam in ante viverra aliquet ac in nisi. Duis luctus viverra ornare. Morbi quis justo velit. Nunc et lobortis sapien, et ultrices arcu. Nam interdum nibh blandit, posuere lectus sed, egestas justo. Ut at luctus nulla, et maximus nulla. Nam rhoncus tellus dui, sit amet commodo orci ornare non. Donec quis turpis sapien. Sed eu nisl nec velit posuere bibendum nec non odio. Pellentesque dui nibh, condimentum et efficitur quis, feugiat at arcu.</p>
+    </article>
+    <div id="headBorder">
+      <h2 id="imgGalleryHead">Store Locations</h2>
+    </div>
+    <section id="locations">
+      <div class="shopLocation">
+        <h3>Seattle</h3>
+        <ul class="locationDetails">
+          <li>6:00am - 8:00pm</li>
+          <li>800 James St Seattle Wa 98104-1931 USA</li>
+          <li>(425)361-3232</li>
+        </ul>
+      </div>
+      <div class="shopLocation">
+        <h3>Tokyo</h3>
+        <ul class="locationDetails">
+          <li>6:00am - 8:00pm</li>
+          <li>7-17, Imai 3-chome Ohme Tokyo Japan</li>
+          <li>(+81)116-072-8737</li>
+        </ul>
+      </div> 
+      <div class="shopLocation">
+        <h3>Dubai</h3>
+        <ul class="locationDetails">
+          <li>6:00am - 8:00pm</li>
+          <li>Box No. 35850 Dubai Emirates</li>
+          <li>(+971)4393-4033</li>
+        </ul>
+      </div>
+      <div class="shopLocation">
+        <h3>Paris</h3>
+        <ul class="locationDetails">
+          <li>6:00am - 8:00pm</li>
+          <li>89 rue Nationale Paris Île-de-France 75004 France</li>
+          <li>(+33)01.18.35.78.87</li>
+        </ul>
+      </div>
+      <div class="shopLocation">
+        <h3>Lima</h3>
+        <ul class="locationDetails">
+          <li>6:00am - 8:00pm</li>
+          <li>Jr. Juno 183 Lima Perú</li>
+          <li>(+51)1251-2528</li>
+        </ul>
+      </div>
     </section>
-
+    <!-- For scrollable img gallery-->
+    <div id="headBorder">
+      <h2 id="imgGalleryHead">Image Gallery</h2>
+    </div>
+    <div class="gallery-scroll">
+      <figure class="gallery-item">
+        <img class="gallery-img" src="img/chinook.jpg" alt="chinook" title="Chinook">
+        <figcaption>Chinook</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img class="gallery-img" src="img/cutter.jpeg" alt="cutter" title="Cutter">
+        <figcaption>Cutter</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img class="gallery-img" src="img/fish.jpg" alt="fish" title="Fish">
+        <figcaption>Fish</figcaption>
+      </figure>      
+      <figure class="gallery-item">
+        <img class="gallery-img" src="img/frosted-cookie.jpg" alt="frosted-cookie" title="Frosted Cookie">
+        <figcaption>Frosted Fish Cookie</figcaption>
+      </figure>      
+      <figure class="gallery-item">
+        <img class="gallery-img" src="img/shirt.jpg" alt="shirtk" title="Shirt">
+        <figcaption>Shirt</figcaption>
+      </figure>      
+    </div>
   </main>
+  <footer>
+    <div id="footer">
+      <p>© Pats Fish inc.</p>
+    </div>
+  </footer>
 </body>
 </html>
