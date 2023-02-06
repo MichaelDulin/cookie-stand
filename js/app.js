@@ -116,21 +116,6 @@ let lima = new Store(
   4.6
 );
 
-headArr();
-seattle.renderTable();
-tokyo.renderTable();
-dubai.renderTable();
-paris.renderTable();
-lima.renderTable();
-total();
-
-/*
-function buildADOMElement(tagToCreate, textContent, parent) {
-  let newElement = document.createElement(tagToCreate);
-  newElement.textContent = textContent;
-  parent.appendChild(newElement);
-} */
-
 let storeForm = document.querySelector('form');
 
 let handleSubmit = function(event) {
@@ -144,15 +129,30 @@ let handleSubmit = function(event) {
     newStoreMin, 
     newStoreMax, 
     newStoreAvg);
-  newStore.newFooter();
+  newStore.addNewStore();
 }
 
-function newFooter() {
-  // Find foot element - remove - call new foot
-  storeTBody.removeChild(storeTFoot);
+function addNewStore() {
   totalArr.shift();
-  newStore.renderTable();
+  let tempArr = this.parseArr();
+  let tBodyRef = document.getElementById('salesTable');
+  tempArr.unshift(this.name)
+  let tr = tBodyRef.insertRow(-1);
+  for (let i = 0; i < tempArr.length; i++) {
+    let cell = tr.insertCell(i);
+    cell.textContent = tempArr[i];
+    tr.appendChild(cell);
+  }
   total();
 }
 
 storeForm.addEventListener('submit', handleSubmit);
+
+
+headArr();
+seattle.renderTable();
+tokyo.renderTable();
+dubai.renderTable();
+paris.renderTable();
+lima.renderTable();
+total();
