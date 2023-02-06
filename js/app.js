@@ -135,22 +135,24 @@ let storeForm = document.querySelector('form');
 
 let handleSubmit = function(event) {
   event.preventDefault();
-  let newStoreName = paresInt(event.target.newStoreName.value);
-  let newStoreMin = paresInt(event.target.newStoreMin.value);
-  let newStoreMax = paresInt(event.target.newStoreMax.value);
-  let newStoreAvg = paresInt(event.target.newStoreAvg.value);
+  let newStoreName = parseInt(event.target.newStoreName.value);
+  let newStoreMin = parseInt(event.target.newStoreMin.value);
+  let newStoreMax = parseInt(event.target.newStoreMax.value);
+  let newStoreAvg = parseInt(event.target.newStoreAvg.value);
   let newStore = new Store(
     newStoreName, 
     newStoreMin, 
     newStoreMax, 
     newStoreAvg);
+  newStore.newFooter();
+}
+
+function newFooter() {
+  // Find foot element - remove - call new foot
+  storeTBody.removeChild(storeTFoot);
+  totalArr.shift();
   newStore.renderTable();
-  function newFooter() {
-    // Find foot element - remove - call new foot
-    storeTBody.removeChild(storeTFoot);
-    totalArr.shift();
-    total();
-  }
+  total();
 }
 
 storeForm.addEventListener('submit', handleSubmit);
